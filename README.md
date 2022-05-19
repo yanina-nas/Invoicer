@@ -41,7 +41,7 @@ Extra expenses table consists of a text field for description, and a field for e
 Clicking on a field allows to edit it, as these fields are input elements.
 
 ## Save as .pdf
-Make sure to hide edit mode by turning off the switch `Show edit buttons`. Clicking `I'm done, print this out` opens print preview, where `show background colors` allows to include or exclude colorful header blocks from the result. Click `Save as PDF` to save your invoice.
+Make sure to hide edit mode by turning off the switch `Show edit buttons`. Clicking `I'm done, print this out` opens print preview, where `Show background colors` allows to include or exclude colorful header blocks from the result. Click `Save as PDF` to save your invoice.
 
 Thank you for trying out this tool and feel free to share your feedback or add an issue.
 
