@@ -1,8 +1,8 @@
-This is a single page application for invoice generation.
+This is a single page application that allows to generate invoices in PDF.
 
 ## Getting Started
 
-First, install dependencies:
+Firstly, install dependencies:
 
 ```bash
 npm i
