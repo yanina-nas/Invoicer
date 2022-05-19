@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = ({ agreementSigningDate, consultantName, c
                 padding={6}
                 textStyle={"note"}
             >
-                {`Note: This invoice is based on the consulting agreement signed on ${agreementSigningDate.format("LL")}`}
+                {agreementSigningDate && `Note: This invoice is based on the consulting agreement signed on ${agreementSigningDate?.format("LL")}`}
             </Box>
             <Flex justify={"space-between"}>
                 <Box flex={1}>
