@@ -1,34 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a single page application for invoice generation.
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm i
+```
+
+Then, run the development server:
+
+```bash
+npm i
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Filling up the form
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+You can start filling up the fields. Fields without values will not be included into generated invoice document.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+For convenience, field values can be hardcoded to avoid manual entry next time.
 
-## Learn More
+Invoicer supports two formats for rate: hourly rate and daily rate with hourly rate being default. To switch between daily rate and hourly rate, click the button under invoice date field in the third column (counting from left to right) of the form.
 
-To learn more about Next.js, take a look at the following resources:
+Two currencies are supported: $ and €, the former sign is placed before the number in resulting table, and the latter is placed behind.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Selecting date range allows for generation of entries (timesheet table) in the document. Checkbox "Exclude Saturdays and Sundays" will allow to include only workdays from the selected date range to the resulting table. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Show preview
+In preview mode entries can be modified by a clicking on them, followed by entering a new value. It is possible because in preview mode entries are actually input fields pretending to be unremarkable table cells.
 
-## Deploy on Vercel
+"Show edit buttons" switch makes delete buttons on every entry visible, which allows to delete particular entry or entries. Plus button allows adding new entry, and the values for rate and hours will be same as in previous timesheet entry. In case of empty timesheet, default values (8 working hours per day, and 70 (of chosen currency) hourly rate.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Extra expenses
+Switch "I need an Extra Expenses block" adds an empty extra expenses block under the timesheet table. Switch "Show edit buttons" allows to create and delete entries. 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Extra expenses table consists of a text field for description, and a field for entering a value for amount. 
+
+Clicking on a field allows to edit it, as these fields are input elements.
+
+## Save as .pdf
+Make sure to hide edit mode by turning off the switch "Show edit buttons". Clicking "I'm done, print this out" opens print preview, where "show background colors" allows to include or exclude colorful header blocks from the result. Click "Save as PDF" to save your invoice.
+
+Thank you for trying out this tool and feel free to share your feedback or add an issue.
+
