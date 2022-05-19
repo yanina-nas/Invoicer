@@ -18,8 +18,9 @@ const Header: React.FC<HeaderProps> = ({
     invoiceDate,
     agreementSigningDate,
 }: React.PropsWithChildren<HeaderProps>) => {
-    const serialNumber = moment().clone().endOf("month").diff(agreementSigningDate?.format(), "months");
-    const invoiceNumber = `${invoiceNumberPrefix}-${serialNumber.toString().padStart(INVOICE_SERIAL_NUMBER_LENGTH, "0")}`;
+    // const serialNumber = moment().clone().endOf("month").diff(agreementSigningDate?.format(), "months");
+    // const invoiceNumber = `${invoiceNumberPrefix}-${serialNumber.toString().padStart(INVOICE_SERIAL_NUMBER_LENGTH, "0")}`;
+    const invoiceNumber = invoiceNumberPrefix;
 
     return (
         <Flex
@@ -30,10 +31,10 @@ const Header: React.FC<HeaderProps> = ({
             <Box flex={1} padding={2} textStyle={"mainTitle"}>
                 {"Invoice"}
             </Box>
-            <Box flex={2}></Box>
+            <Box flex={3}></Box>
             <Box
-                flex={2}
-                textStyle={"title"}
+                flex={3}
+                textStyle={"subTitle"}
             >
                 <Flex justify={"space-between"}>
                     <Box flex={1}>{"Invoice #:"}</Box>
@@ -41,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({
                 </Flex>
                 <Flex justify={"space-between"}>
                     <Box flex={1}>{"Date:"}</Box>
-                    <Box flex={1} textAlign={"right"}>{invoiceDate.format("LL")}</Box>
+                    <Box flex={1} textAlign={"right"}>{invoiceDate?.format("LL")}</Box>
                 </Flex>
             </Box>
         </Flex>
