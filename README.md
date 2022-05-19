@@ -28,8 +28,8 @@ Two currencies are supported: $ and €, the former sign is placed before the nu
 
 Selecting date range allows for generation of entries (timesheet table) in the document. Checkbox "Exclude Saturdays and Sundays" will allow to include only workdays from the selected date range to the resulting table. 
 
-## Show preview
-In preview mode entries can be modified by a clicking on them, followed by entering a new value. It is possible because in preview mode entries are actually input fields pretending to be unremarkable table cells.
+## Preview mode
+Clicking "Show preview" enables preview mode. In preview mode entries can be modified by a clicking on them, followed by entering a new value. It is possible because in preview mode entries are actually input fields pretending to be unremarkable table cells.
 
 "Show edit buttons" switch makes delete buttons on every entry visible, which allows to delete particular entry or entries. Plus button allows adding new entry, and the values for rate and hours will be same as in previous timesheet entry. In case of empty timesheet, default values (8 working hours per day, and 70 (of chosen currency) hourly rate.
 
