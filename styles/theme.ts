@@ -7,7 +7,7 @@ export enum blueTheme {
   lightAccent = "#e5ebf9",
 }
 
-const customTheme = extendTheme({
+const overrides = {
   fontFamily: "Avenir",
   textStyles: {
     mainTitle: {
@@ -78,9 +78,10 @@ const customTheme = extendTheme({
       fontFamily: "Avenir",
     },
   },
-});
 
-export default customTheme;
+}
+
+export default extendTheme(overrides)
 
 
 

@@ -2,10 +2,11 @@ import React from "react";
 import InvoiceHeader from "./InvoiceHeader";
 import {
     Box,
-    Button,
     Flex,
     Input,
 } from "@chakra-ui/react";
+import { PlusOutlined, DeleteFilled } from '@ant-design/icons';
+import { Button, Tooltip } from 'antd';
 import { Dictionary, ExtraExpensesEntry, TimesheetEntry } from "../common/types";
 import { dictToValuesArr, FIRST_ELEMENT, format, LAST_ELEMENT, parse, sum, ZERO } from "../common/utils";
 import moment from "moment";
@@ -141,14 +142,10 @@ const TableBlock: React.FC<TableProps> = ({
                                 : ""}
                         `}
                     </Box>
-                    <Button
+                    {showControls && <Tooltip placement="right" title="delete row"><Button icon={<DeleteFilled />}
                         onClick={() => onDeleteTimesheetEntry(timesheetData, timesheetEntryDate)}
-                        size={"xs"}
-                        colorScheme={"teal"}
-                        display={showControls ? "inherit" : "none"}
-                    >
-                        {"-"}
-                    </Button>
+                        size={"small"}
+                    /></Tooltip>}
                 </Flex>
 
             ))}
@@ -159,14 +156,10 @@ const TableBlock: React.FC<TableProps> = ({
                 <Box flex={4} textAlign={"right"}>
                     {`${currency === Currency.Dollar ? Currency.Dollar : ""}${subTotalAmount}${currency === Currency.Euro ? Currency.Euro : ""}`}
                 </Box>
-                <Button
+                {showControls && <Tooltip placement="right" title="add new row"><Button shape="circle" icon={<PlusOutlined />} 
                     onClick={() => onCreateTimesheetEntry(timesheetData)}
-                    size={"xs"}
-                    colorScheme={"teal"}
-                    display={showControls ? "inherit" : "none"}
-                >
-                    {"+"}
-                </Button>
+                    size={"small"}
+                /></Tooltip>}
             </Flex>
             {showExtraExpenses
                 ? <ExtraExpensesBlock

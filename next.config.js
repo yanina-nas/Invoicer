@@ -1,10 +1,7 @@
-module.exports = {
-    webpackDevMiddleware: (config) => {
-        config.watchOptions = {
-            poll: 1000,
-            aggregateTimeout: 300,
-        };
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+}
 
-        return config;
-    },
-};
+module.exports = nextConfig

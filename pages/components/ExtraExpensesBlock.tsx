@@ -1,10 +1,12 @@
 import React from "react";
-import { Flex, Box, Input, Button } from "@chakra-ui/react";
+import { Flex, Box, Input } from "@chakra-ui/react";
 import InvoiceHeader from "./InvoiceHeader";
 import { Currency, InvoiceHeaderIdentifier } from "../common/enums";
 import { format, parse, sum } from "../common/utils";
 import { Dictionary, ExtraExpensesEntry } from "../common/types";
 import { blueTheme } from "../../styles/theme";
+import { PlusOutlined, DeleteFilled } from '@ant-design/icons';
+import { Button, Tooltip } from 'antd';
 
 interface ExtraExpensesProps {
     showControls: boolean;
@@ -91,14 +93,10 @@ const ExtraExpensesBlock: React.FC<ExtraExpensesProps> = ({
                             size={"inherit"}
                         />
                     </Box>
-                    <Button
+                    {showControls && <Tooltip placement="right" title="delete row"><Button icon={<DeleteFilled />}
                         onClick={() => onDeleteExtraExpensesEntry(extraExpensesData, extraExpensesEntryKey)}
-                        size={"xs"}
-                        colorScheme={"teal"}
-                        display={showControls ? "inherit" : "none"}
-                    >
-                        {"-"}
-                    </Button>
+                        size={"small"}
+                    /></Tooltip>}
                 </Flex>
             ))}
             <Flex gap={4} paddingX={2} paddingY={3} textStyle={"infoBlockHeader"} textAlign={"left"} borderTop={"1px dashed #eee"}>
@@ -106,14 +104,10 @@ const ExtraExpensesBlock: React.FC<ExtraExpensesProps> = ({
                 <Box flex={4} textAlign={"right"}>
                     {`${format(currency, subTotalExtraAmount)}`}
                 </Box>
-                <Button
+                {showControls && <Tooltip placement="right" title="add new row"><Button shape="circle" icon={<PlusOutlined />} 
                     onClick={() => onCreateExtraExpensesEntry(extraExpensesData)}
-                    size={"xs"}
-                    colorScheme={"teal"}
-                    display={showControls ? "inherit" : "none"}
-                >
-                    {"+"}
-                </Button>
+                    size={"small"}
+                /></Tooltip>}
             </Flex>
             <Flex gap={4} paddingX={2} paddingY={3} textStyle={"infoBlockHeader"} textAlign={"left"} borderTop={"1px dashed #eee"}>
                 <Box flex={12}>{"Total"}</Box>
