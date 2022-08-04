@@ -8,7 +8,7 @@ import {
 import { PlusOutlined, DeleteFilled } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
 import { Dictionary, ExtraExpensesEntry, TimesheetEntry } from "../common/types";
-import { dictToValuesArr, FIRST_ELEMENT, format, LAST_ELEMENT, parse, sum, ZERO } from "../common/utils";
+import { dictToValuesArr, FIRST_ELEMENT, format, LAST_ELEMENT, parse, ZERO } from "../common/utils";
 import moment from "moment";
 import ExtraExpensesBlock from "./ExtraExpensesBlock";
 import { Currency, InvoiceHeaderIdentifier } from "../common/enums";
@@ -44,10 +44,14 @@ const TableBlock: React.FC<TableProps> = ({
     onCreateExtraExpensesEntry,
     onDeleteExtraExpensesEntry,
 }: React.PropsWithChildren<TableProps>) => {
+    const computedSum: number = Object.values(timesheetData).reduce(
+        (accumulator, currentValue) => accumulator + (Number(currentValue ? currentValue["hours"] : ZERO)),
+        ZERO
+    );
 
-    const subTotalHours: number = defaultClient ? sum(dictToValuesArr(timesheetData), "hours") : Object.keys(timesheetData).length;
+    const subTotalHours: number = defaultClient ? computedSum : Object.keys(timesheetData).length;
     const subTotalAmount: number = dictToValuesArr(timesheetData)
-        .map((entry) => defaultClient ? entry.hours * entry.rate : entry.rate)
+        .map((entry) => defaultClient ? entry!.hours * entry!.rate : entry!.rate)
         .reduce((accumulator: number, currentValue: number) => accumulator + currentValue, ZERO)
         ;
     const startMonth: string = moment(Object.keys(timesheetData).sort()[FIRST_ELEMENT])?.format("MMMM");
@@ -87,7 +91,7 @@ const TableBlock: React.FC<TableProps> = ({
                             paddingTop={1}
                             textAlign={"center"}
                             name={"hours"}
-                            value={defaultClient ? `${timesheetData[timesheetEntryDate].hours}` : "1"}
+                            value={defaultClient ? `${timesheetData[timesheetEntryDate]!.hours}` : "1"}
                             onChange={(event) => onUpdateTimesheetField(
                                 timesheetData,
                                 "hours",
@@ -111,7 +115,7 @@ const TableBlock: React.FC<TableProps> = ({
                             paddingTop={1}
                             textAlign={"center"}
                             name={"rate"}
-                            value={format(currency, `${timesheetData[timesheetEntryDate].rate}`)}
+                            value={format(currency, `${timesheetData[timesheetEntryDate]?.rate}`)}
                             onChange={(event) => onUpdateTimesheetField(
                                 timesheetData,
                                 "rate",
@@ -136,8 +140,8 @@ const TableBlock: React.FC<TableProps> = ({
                                 ? Currency.Dollar
                                 : ""
                             }${defaultClient 
-                                    ? timesheetData[timesheetEntryDate].hours * timesheetData[timesheetEntryDate].rate
-                                    : timesheetData[timesheetEntryDate].rate}${currency === Currency.Euro
+                                    ? timesheetData[timesheetEntryDate]!.hours * timesheetData[timesheetEntryDate]!.rate
+                                    : timesheetData[timesheetEntryDate]!.rate}${currency === Currency.Euro
                                 ? Currency.Euro
                                 : ""}
                         `}

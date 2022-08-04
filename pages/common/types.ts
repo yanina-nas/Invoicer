@@ -2,7 +2,7 @@ import { ContactInfoLabels, BankAccountInfoLabels } from "./enums";
 
 export type FieldName = ContactInfoLabels | BankAccountInfoLabels;
 
-export type InfoBlockData<T extends FieldName> = Partial<Record<T, string>>;
+export type InfoBlockData<T extends FieldName | string> = Partial<Record<T, string>>;
 // export type InfoBlockData<T extends FieldName> = Partial<Record<T, string>>[];
 
 export type BankAccountInfo = InfoBlockData<BankAccountInfoLabels>;

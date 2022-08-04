@@ -6,7 +6,7 @@ import {
 import { FieldName, InfoBlockData } from "../common/types";
 
 interface InfoBlockProps {
-    infoBlockData: InfoBlockData<FieldName>;
+    infoBlockData: InfoBlockData<FieldName | string>;
     title?: string;
     leftColumnFlexValue?: number;
     rightColumnFlexValue?: number;
@@ -23,7 +23,7 @@ const InfoBlock: React.FC<InfoBlockProps> = ({
     return (
         <Flex direction={"column"} justifyItems={"flex-start"} flex={1}>
             {!!title && <Box paddingY={2} textAlign={titleTextAlignedRight ? "right" : "left"} textStyle={"subTitle"}>{title}</Box>}
-            {Object.keys(infoBlockData).map((infoBlockEntryKey: FieldName, index: number) => (
+            {Object.keys(infoBlockData).map((infoBlockEntryKey: string, index: number) => (
                infoBlockData[infoBlockEntryKey] && <Flex key={index}>
                     <Box flex={leftColumnFlexValue} textStyle={"infoBlockHeader"}>{infoBlockEntryKey}</Box>
                     <Box flex={rightColumnFlexValue} textStyle={"infoBlockValue"} textAlign={"right"}>

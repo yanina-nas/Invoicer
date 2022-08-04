@@ -18,14 +18,6 @@ export const INVOICE_SERIAL_NUMBER_LENGTH: number = 3;
 export const FIRST_ELEMENT: number = 0;
 export const LAST_ELEMENT: number = -1;
 
-
-export const sum = <T extends unknown>(arr?: T[], key?: keyof T): number => {
-    return arr?.reduce(
-        (accumulator, currentValue) => accumulator + (Number(currentValue[key]) || ZERO),
-        ZERO
-    );
-};
-
 export const format = <T>(currency: Currency, value: T): string => {
     if (Number(value) >= 0 ){
         switch (currency) {
@@ -49,7 +41,7 @@ export const parse = (currency: Currency, val: string): string => val.replace(cu
 
 
 
-export const dictToValuesArr = (dict: Dictionary<string, TimesheetEntry>): TimesheetEntry[] => Object.keys(dict).map((key) => dict[key]);
+export const dictToValuesArr = (dict: Dictionary<string, TimesheetEntry>): (TimesheetEntry | undefined)[] => Object.keys(dict).map((key) => dict[key]);
 
 export const multiplyArraysSum = (array1: number[], array2: number[]): number => {
     return array1.reduce((accumulator, currentValue, index) => (accumulator + currentValue * array2[index], ZERO));

@@ -8,9 +8,9 @@ import moment from "moment";
 import { INVOICE_SERIAL_NUMBER_LENGTH } from "../common/utils";
 
 interface HeaderProps {
-    invoiceNumberPrefix: string;
-    invoiceDate: Moment;
-    agreementSigningDate: Moment;
+    invoiceNumberPrefix: string | null;
+    invoiceDate: Moment | null;
+    agreementSigningDate: Moment | null;
 }
 
 const Header: React.FC<HeaderProps> = ({

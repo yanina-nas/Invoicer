@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Box, Input } from "@chakra-ui/react";
 import InvoiceHeader from "./InvoiceHeader";
 import { Currency, InvoiceHeaderIdentifier } from "../common/enums";
-import { format, parse, sum } from "../common/utils";
+import { format, parse, ZERO } from "../common/utils";
 import { Dictionary, ExtraExpensesEntry } from "../common/types";
 import { blueTheme } from "../../styles/theme";
 import { PlusOutlined, DeleteFilled } from '@ant-design/icons';
@@ -27,7 +27,11 @@ const ExtraExpensesBlock: React.FC<ExtraExpensesProps> = ({
     onCreateExtraExpensesEntry,
     onDeleteExtraExpensesEntry,
 }: ExtraExpensesProps) => {
-    const subTotalExtraAmount: number = sum(Object.values(extraExpensesData), "amount");
+    // const subTotalExtraAmount: number = sum(Object.values(extraExpensesData), "amount");
+    const subTotalExtraAmount: number = Object.values(extraExpensesData).reduce(
+        (accumulator, currentValue) => accumulator + (Number(currentValue ? currentValue["amount"] : ZERO)),
+        ZERO
+    );
     const totalAmount: number = subTotalAmount + subTotalExtraAmount;
 
     return (
@@ -50,7 +54,7 @@ const ExtraExpensesBlock: React.FC<ExtraExpensesProps> = ({
                         <Input
                             textStyle={"paragraph"}
                             textAlign={"left"}
-                            value={`${extraExpensesData[extraExpensesEntryKey].item}`}
+                            value={`${extraExpensesData[extraExpensesEntryKey]!.item}`}
                             onChange={(event) => onUpdateExtraExpensesField(
                                 extraExpensesData,
                                 extraExpensesEntryKey,
@@ -74,7 +78,7 @@ const ExtraExpensesBlock: React.FC<ExtraExpensesProps> = ({
                             paddingRight={2}
                             textStyle={"paragraph"}
                             textAlign={"right"}
-                            value={format(currency, `${extraExpensesData[extraExpensesEntryKey].amount}`)}
+                            value={format(currency, `${extraExpensesData[extraExpensesEntryKey]!.amount}`)}
                             onChange={(event) => onUpdateExtraExpensesField(
                                 extraExpensesData,
                                 extraExpensesEntryKey,

@@ -3,8 +3,6 @@ import { useReactToPrint } from "react-to-print";
 import moment, { Moment } from "moment";
 import {
   DatePicker,
-  InputNumber,
-  Switch,
   Select,
   Col,
   Row,
@@ -22,14 +20,7 @@ import {
 } from "@ant-design/icons";
 import {
   Box,
-  // Checkbox,
   Flex,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  // Switch,
 } from "@chakra-ui/react";
 import Home from "./Home";
 import { Dictionary, ExtraExpensesEntry, TimesheetEntry } from "./common/types";
@@ -39,7 +30,6 @@ import {
   keysToDictionary,
   ONE,
   DEFAULT_HOURLY_RATE,
-  DEFAULT_DAILY_RATE,
   ZERO,
 } from "./common/utils";
 import {
@@ -109,10 +99,10 @@ const Example: React.FC = (): JSX.Element => {
   const [clientEmail, setClientEmail] = useState<string>("");
 
   const [timesheetData, setTimesheetData] = useState<
-    Dictionary<string, TimesheetEntry>
+  { [x: string]: TimesheetEntry | { hours?: number | undefined; rate?: number | undefined; } | undefined; }
   >({});
   const [extraExpensesData, setExtraExpensesData] = useState<
-    Dictionary<string, ExtraExpensesEntry>
+  { [x: string]: {} | undefined; }
   >({});
 
   const [beneficiary, setBeneficiary] = useState<string>("");
@@ -230,7 +220,7 @@ const Example: React.FC = (): JSX.Element => {
   };
 
   const onUpdateExtraExpensesField = (
-    extraExpensesData: Dictionary<string, ExtraExpensesEntry>,
+    extraExpensesData: { [x: string]: ExtraExpensesEntry | { item?: string | undefined; amount?: number | undefined; } | undefined; },
     chosenEntryKey: string,
     fieldName: string,
     newValue: string
