@@ -7,11 +7,11 @@ import {
 } from "@chakra-ui/react";
 import { PlusOutlined, DeleteFilled } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
-import { Dictionary, ExtraExpensesEntry, TimesheetEntry } from "../common/types";
-import { dictToValuesArr, FIRST_ELEMENT, format, LAST_ELEMENT, parse, ZERO } from "../common/utils";
+import { Dictionary, ExtraExpensesEntry, TimesheetEntry } from "../../src/common/types";
+import { dictToValuesArr, FIRST_ELEMENT, format, LAST_ELEMENT, parse, ZERO } from "../../src/common/utils";
 import moment from "moment";
 import ExtraExpensesBlock from "./ExtraExpensesBlock";
-import { Currency, InvoiceHeaderIdentifier } from "../common/enums";
+import { Currency, InvoiceHeaderIdentifier } from "../../src/common/enums";
 import { blueTheme } from "../../styles/theme";
 
 interface TableProps {

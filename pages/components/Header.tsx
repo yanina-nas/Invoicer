@@ -5,7 +5,7 @@ import {
 } from "@chakra-ui/react";
 import { Moment } from "moment";
 import moment from "moment";
-import { INVOICE_SERIAL_NUMBER_LENGTH } from "../common/utils";
+import { INVOICE_SERIAL_NUMBER_LENGTH } from "../../src/common/utils";
 
 interface HeaderProps {
     invoiceNumberPrefix: string | null;

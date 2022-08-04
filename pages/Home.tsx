@@ -4,9 +4,9 @@ import InvoiceHeader from "./components/InvoiceHeader";
 import InfoBlock from "./components/InfoBlock";
 import TableBlock from "./components/TableBlock";
 import Footer from "./components/Footer";
-import { Currency, InvoiceHeaderIdentifier } from "./common/enums";
+import { Currency, InvoiceHeaderIdentifier } from "../src/common/enums";
 import { Flex } from "@chakra-ui/react";
-import { BankAccountInfo, ContactInfo, Dictionary, ExtraExpensesEntry, TimesheetEntry } from "./common/types";
+import { BankAccountInfo, ContactInfo, Dictionary, ExtraExpensesEntry, TimesheetEntry } from "../src/common/types";
 import { Moment } from "moment";
 import { blueTheme } from "../styles/theme";
 

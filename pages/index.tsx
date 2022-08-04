@@ -23,7 +23,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import Home from "./Home";
-import { Dictionary, ExtraExpensesEntry, TimesheetEntry } from "./common/types";
+import { Dictionary, ExtraExpensesEntry, TimesheetEntry } from "../src/common/types";
 import {
   DEFAULT_WORKING_DAY_HOURS,
   getDaysFromRange,
@@ -31,12 +31,12 @@ import {
   ONE,
   DEFAULT_HOURLY_RATE,
   ZERO,
-} from "./common/utils";
+} from "../src/common/utils";
 import {
   BankAccountInfoLabels,
   ContactInfoLabels,
   Currency,
-} from "./common/enums";
+} from "../src/common/enums";
 import { Card } from "antd";
 
 

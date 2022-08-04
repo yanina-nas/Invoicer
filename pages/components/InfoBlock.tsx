@@ -3,7 +3,7 @@ import {
     Flex,
     Box,
 } from "@chakra-ui/react";
-import { FieldName, InfoBlockData } from "../common/types";
+import { FieldName, InfoBlockData } from "../../src/common/types";
 
 interface InfoBlockProps {
     infoBlockData: InfoBlockData<FieldName | string>;

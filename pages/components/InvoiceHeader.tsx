@@ -3,7 +3,7 @@ import {
     Box,
     Flex,
 } from "@chakra-ui/react";
-import { InvoiceHeaderIdentifier } from "../common/enums";
+import { InvoiceHeaderIdentifier } from "../../src/common/enums";
 import { blueTheme } from "../../styles/theme";
 
 interface InvoiceHeaderProps {

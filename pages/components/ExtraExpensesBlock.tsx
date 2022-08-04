@@ -1,9 +1,9 @@
 import React from "react";
 import { Flex, Box, Input } from "@chakra-ui/react";
 import InvoiceHeader from "./InvoiceHeader";
-import { Currency, InvoiceHeaderIdentifier } from "../common/enums";
-import { format, parse, ZERO } from "../common/utils";
-import { Dictionary, ExtraExpensesEntry } from "../common/types";
+import { Currency, InvoiceHeaderIdentifier } from "../../src/common/enums";
+import { format, parse, ZERO } from "../../src/common/utils";
+import { Dictionary, ExtraExpensesEntry } from "../../src/common/types";
 import { blueTheme } from "../../styles/theme";
 import { PlusOutlined, DeleteFilled } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
