@@ -39,6 +39,17 @@ import {
 } from "./common/enums";
 import { Card } from "antd";
 
+
+const DEFAULT_TIMESHEET_ENTRY: TimesheetEntry = {
+  hours: 0,
+  rate: 0,
+};
+
+const DEFAULT_EXTRA_EXPENSES_ENTRY: ExtraExpensesEntry = {
+  item: "",
+  amount: 0,
+};
+
 const Example: React.FC = (): JSX.Element => {
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
@@ -98,12 +109,9 @@ const Example: React.FC = (): JSX.Element => {
   const [clientPhone, setClientPhone] = useState<string>("");
   const [clientEmail, setClientEmail] = useState<string>("");
 
-  const [timesheetData, setTimesheetData] = useState<
-  { [x: string]: TimesheetEntry | { hours?: number | undefined; rate?: number | undefined; } | undefined; }
-  >({});
-  const [extraExpensesData, setExtraExpensesData] = useState<
-  { [x: string]: {} | undefined; }
-  >({});
+  // { [x: string]: TimesheetEntry | { hours?: number | undefined; rate?: number | undefined; } | undefined; }
+  const [timesheetData, setTimesheetData] = useState<Dictionary<string, TimesheetEntry>>({});
+  const [extraExpensesData, setExtraExpensesData] = useState<Dictionary<string, ExtraExpensesEntry>>({});
 
   const [beneficiary, setBeneficiary] = useState<string>("");
   const [beneficiaryAltName, setBeneficiaryAltName] = useState<string>("");
@@ -155,10 +163,10 @@ const Example: React.FC = (): JSX.Element => {
     chosenTimestampKey: string,
     newValue: string
   ): void => {
-    const updatedTimesheetData = {
+    const updatedTimesheetData: Dictionary<string, TimesheetEntry> = {
       ...timesheetData,
       [chosenTimestampKey]: {
-        ...timesheetData[chosenTimestampKey],
+        ...(timesheetData[chosenTimestampKey] || DEFAULT_TIMESHEET_ENTRY),
         [fieldName]: Number(newValue),
       },
     };
@@ -220,15 +228,15 @@ const Example: React.FC = (): JSX.Element => {
   };
 
   const onUpdateExtraExpensesField = (
-    extraExpensesData: { [x: string]: ExtraExpensesEntry | { item?: string | undefined; amount?: number | undefined; } | undefined; },
+    extraExpensesData: Dictionary<string, ExtraExpensesEntry>,
     chosenEntryKey: string,
     fieldName: string,
     newValue: string
   ): void => {
-    const updatedExtraExpensesData = {
+    const updatedExtraExpensesData: Dictionary<string, ExtraExpensesEntry> = {
       ...extraExpensesData,
       [chosenEntryKey]: {
-        ...extraExpensesData[chosenEntryKey],
+        ...(extraExpensesData[chosenEntryKey] || DEFAULT_EXTRA_EXPENSES_ENTRY),
         [fieldName]: fieldName === "amount" ? Number(newValue) : newValue,
       },
     };
