@@ -177,18 +177,18 @@ const Example: React.FC = (): JSX.Element => {
     timesheetData: Dictionary<string, TimesheetEntry>
   ): void => {
     const nextDayTimestampKey: string = moment(
-      Object.keys(timesheetData)[Object.keys(timesheetData).length - ONE]
+      Object.keys(timesheetData || {})[Object.keys(timesheetData || {}).length - ONE]
     )
       .add(ONE, "days")
       .format("YYYY-MM-DD");
     const todayTimestampKey = moment().format("YYYY-MM-DD");
     const rateOfPreviousEntry: number | undefined =
       timesheetData[
-        Object.keys(timesheetData)[Object.keys(timesheetData).length - ONE]
+        Object.keys(timesheetData || {})[Object.keys(timesheetData || {}).length - ONE]
       ]?.rate;
     const workingHoursOfPreviousEntry: number | undefined =
       timesheetData[
-        Object.keys(timesheetData)[Object.keys(timesheetData).length - ONE]
+        Object.keys(timesheetData || {})[Object.keys(timesheetData || {}).length - ONE]
       ]?.hours;
     const updatedTimesheetData = {
       ...timesheetData,
@@ -204,7 +204,7 @@ const Example: React.FC = (): JSX.Element => {
     timesheetData: Dictionary<string, TimesheetEntry>,
     chosenTimestampKey: string
   ): void => {
-    const updatedTimesheetData = Object.keys(timesheetData).reduce(
+    const updatedTimesheetData = Object.keys(timesheetData || {}).reduce(
       (updatedTimesheetData, timestampKey) => {
         return timestampKey === chosenTimestampKey
           ? updatedTimesheetData
@@ -247,8 +247,8 @@ const Example: React.FC = (): JSX.Element => {
     extraExpensesData: Dictionary<string, ExtraExpensesEntry>
   ): void => {
     const nextDayTimestampKey = moment(
-      Object.keys(extraExpensesData)[
-        Object.keys(extraExpensesData).length - ONE
+      Object.keys(extraExpensesData || {})[
+        Object.keys(extraExpensesData || {}).length - ONE
       ]
     )
       .add(ONE, "days")
@@ -268,7 +268,7 @@ const Example: React.FC = (): JSX.Element => {
     extraExpensesData: Dictionary<string, ExtraExpensesEntry>,
     chosenEntryKey: string
   ): void => {
-    const updatedExtraExpensesData = Object.keys(extraExpensesData).reduce(
+    const updatedExtraExpensesData = Object.keys(extraExpensesData || {}).reduce(
       (updatedExtraExpensesData, entryKey) => {
         return entryKey === chosenEntryKey
           ? updatedExtraExpensesData

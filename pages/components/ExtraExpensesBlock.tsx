@@ -28,7 +28,7 @@ const ExtraExpensesBlock: React.FC<ExtraExpensesProps> = ({
     onDeleteExtraExpensesEntry,
 }: ExtraExpensesProps) => {
     // const subTotalExtraAmount: number = sum(Object.values(extraExpensesData), "amount");
-    const subTotalExtraAmount: number = Object.values(extraExpensesData).reduce(
+    const subTotalExtraAmount: number = Object.values(extraExpensesData || {}).reduce(
         (accumulator, currentValue) => accumulator + (Number(currentValue ? currentValue["amount"] : ZERO)),
         ZERO
     );
@@ -42,7 +42,7 @@ const ExtraExpensesBlock: React.FC<ExtraExpensesProps> = ({
                 <Box flex={4}></Box>
                 <Box textAlign={"right"} paddingX={2} flex={4}>{`Amount, ${currency}`}</Box>
             </Flex>
-            {Object.keys(extraExpensesData).map((extraExpensesEntryKey) => (
+            {Object.keys(extraExpensesData || {}).map((extraExpensesEntryKey) => (
                 <Flex
                     key={extraExpensesEntryKey}
                     textStyle={"infoBlockValue"}

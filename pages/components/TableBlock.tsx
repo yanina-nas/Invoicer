@@ -44,19 +44,19 @@ const TableBlock: React.FC<TableProps> = ({
     onCreateExtraExpensesEntry,
     onDeleteExtraExpensesEntry,
 }: React.PropsWithChildren<TableProps>) => {
-    const computedSum: number = Object.values(timesheetData).reduce(
+    const computedSum: number = Object.values(timesheetData || {}).reduce(
         (accumulator, currentValue) => accumulator + (Number(currentValue ? currentValue["hours"] : ZERO)),
         ZERO
     );
 
-    const subTotalHours: number = defaultClient ? computedSum : Object.keys(timesheetData).length;
+    const subTotalHours: number = defaultClient ? computedSum : Object.keys(timesheetData || {}).length;
     const subTotalAmount: number = dictToValuesArr(timesheetData)
         .map((entry) => defaultClient ? entry!.hours * entry!.rate : entry!.rate)
         .reduce((accumulator: number, currentValue: number) => accumulator + currentValue, ZERO)
         ;
-    const startMonth: string = moment(Object.keys(timesheetData).sort()[FIRST_ELEMENT])?.format("MMMM");
-    const endMonth: string = moment(Object.keys(timesheetData).sort()[LAST_ELEMENT])?.format("MMMM");
-    const endYear: string = moment(Object.keys(timesheetData).sort()[LAST_ELEMENT])?.format("YYYY");
+    const startMonth: string = moment(Object.keys(timesheetData || {}).sort()[FIRST_ELEMENT])?.format("MMMM");
+    const endMonth: string = moment(Object.keys(timesheetData || {}).sort()[LAST_ELEMENT])?.format("MMMM");
+    const endYear: string = moment(Object.keys(timesheetData || {}).sort()[LAST_ELEMENT])?.format("YYYY");
 
     const monthsSubheader = `${startMonth} ${endYear}`;
         // startMonth === endMonth
@@ -73,7 +73,7 @@ const TableBlock: React.FC<TableProps> = ({
                 <Box textAlign={"right"} paddingX={2} flex={4}>{"Amount"}</Box>
             </Flex>
 
-            {Object.keys(timesheetData).map((timesheetEntryDate) => (
+            {Object.keys(timesheetData || {}).map((timesheetEntryDate) => (
                 <Flex
                     textStyle={"infoBlockValue"}
                     textAlign={"center"}

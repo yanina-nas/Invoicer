@@ -41,7 +41,7 @@ export const parse = (currency: Currency, val: string): string => val.replace(cu
 
 
 
-export const dictToValuesArr = (dict: Dictionary<string, TimesheetEntry>): (TimesheetEntry | undefined)[] => Object.keys(dict).map((key) => dict[key]);
+export const dictToValuesArr = (dict: Dictionary<string, TimesheetEntry>): (TimesheetEntry | undefined)[] => Object.keys(dict || {}).map((key) => dict[key]);
 
 export const multiplyArraysSum = (array1: number[], array2: number[]): number => {
     return array1.reduce((accumulator, currentValue, index) => (accumulator + currentValue * array2[index], ZERO));
