@@ -289,11 +289,13 @@ const Example: React.FC = (): JSX.Element => {
       backgroundColor={"#e8ebf2"}
       justify={"center"}
     >
-      <Card title="Invoicer">
+      <Card headStyle={{fontFamily: "'Gaegu', 'Fuzzy Bubbles', 'Pacifico', cursive", display: "swap", fontSize: "5em"}} style={{fontFamily: "Avenir Next", color: "#345", fontWeight: "500", backgroundColor: "#e8ebf2"}} title="Invoicer">
         <div className="site-card-wrapper">
           <Card
             type="inner"
             title="Invoice builder"
+            headStyle={{backgroundColor: "#334455", color: "#fff", fontSize: "3em", fontWeight: "600"}}
+            style={{border: "0.1px solid #334455"}}
             extra={
               <Button.Group>
                 <Button onClick={handleShowPreview}>
@@ -313,7 +315,10 @@ const Example: React.FC = (): JSX.Element => {
               <>
                 <Row gutter={16}>
                   <Col span={8}>
-                    <Card title="Timeline setup">
+                    <Card title="Timeline setup" 
+                    headStyle={{backgroundColor: "#bbccdd"}}
+                    style={{border: "0.1px solid #bcd"}}
+                    >
                       <Form
                         layout={"vertical"}
                         name="basic"
@@ -375,7 +380,9 @@ const Example: React.FC = (): JSX.Element => {
                     </Card>
                   </Col>
                   <Col span={8}>
-                    <Card title="Client info">
+                    <Card title="Client info"
+                    headStyle={{backgroundColor: "#bbccdd"}}
+                    style={{border: "0.1px solid #bcd"}}>
                       <Form.Item name="clientName" label="Company name">
                         <Input
                           placeholder={"Enter company name"}
@@ -421,7 +428,8 @@ const Example: React.FC = (): JSX.Element => {
                     </Card>
                   </Col>
                   <Col span={8}>
-                    <Card title="Consultant info">
+                    <Card title="Consultant info" headStyle={{backgroundColor: "#bbccdd"}}
+                    style={{border: "0.1px solid #bcd"}}>
                       <Form.Item name="consultantName" label="Consultant name">
                         <Input
                           placeholder={"Enter consultant name"}
@@ -469,7 +477,8 @@ const Example: React.FC = (): JSX.Element => {
                 </Row>
                 <Row gutter={16}>
                   <Col span={24}>
-                    <Card title="Details">
+                    <Card title="Details" headStyle={{backgroundColor: "#bbccdd"}}
+                    style={{border: "0.1px solid #bcd"}}>
                       <Form
                         layout={"vertical"}
                         name="basic"
@@ -524,7 +533,8 @@ const Example: React.FC = (): JSX.Element => {
 
                 <Row gutter={16}>
                   <Col span={24}>
-                    <Card title="Bank account information">
+                    <Card title="Bank account information" headStyle={{backgroundColor: "#bbccdd"}}
+                    style={{border: "0.1px solid #bcd"}}>
                       <Form
                         layout={"vertical"}
                         name="basic"

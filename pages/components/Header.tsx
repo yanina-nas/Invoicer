@@ -4,8 +4,6 @@ import {
     Box,
 } from "@chakra-ui/react";
 import { Moment } from "moment";
-import moment from "moment";
-import { INVOICE_SERIAL_NUMBER_LENGTH } from "../../src/common/utils";
 
 interface HeaderProps {
     invoiceNumberPrefix: string | null;
@@ -18,8 +16,6 @@ const Header: React.FC<HeaderProps> = ({
     invoiceDate,
     agreementSigningDate,
 }: React.PropsWithChildren<HeaderProps>) => {
-    // const serialNumber = moment().clone().endOf("month").diff(agreementSigningDate?.format(), "months");
-    // const invoiceNumber = `${invoiceNumberPrefix}-${serialNumber.toString().padStart(INVOICE_SERIAL_NUMBER_LENGTH, "0")}`;
     const invoiceNumber = invoiceNumberPrefix;
 
     return (
