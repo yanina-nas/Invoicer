@@ -18,12 +18,13 @@ import {
   PrinterOutlined,
   EditOutlined,
 } from "@ant-design/icons";
-import {
-  Box,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import Home from "./Home";
-import { Dictionary, ExtraExpensesEntry, TimesheetEntry } from "../src/common/types";
+import {
+  Dictionary,
+  ExtraExpensesEntry,
+  TimesheetEntry,
+} from "../src/common/types";
 import {
   DEFAULT_WORKING_DAY_HOURS,
   getDaysFromRange,
@@ -38,7 +39,6 @@ import {
   Currency,
 } from "../src/common/enums";
 import { Card } from "antd";
-
 
 const DEFAULT_TIMESHEET_ENTRY: TimesheetEntry = {
   hours: 0,
@@ -110,8 +110,12 @@ const Example: React.FC = (): JSX.Element => {
   const [clientEmail, setClientEmail] = useState<string>("");
 
   // { [x: string]: TimesheetEntry | { hours?: number | undefined; rate?: number | undefined; } | undefined; }
-  const [timesheetData, setTimesheetData] = useState<Dictionary<string, TimesheetEntry>>({});
-  const [extraExpensesData, setExtraExpensesData] = useState<Dictionary<string, ExtraExpensesEntry>>({});
+  const [timesheetData, setTimesheetData] = useState<
+    Dictionary<string, TimesheetEntry>
+  >({});
+  const [extraExpensesData, setExtraExpensesData] = useState<
+    Dictionary<string, ExtraExpensesEntry>
+  >({});
 
   const [beneficiary, setBeneficiary] = useState<string>("");
   const [beneficiaryAltName, setBeneficiaryAltName] = useState<string>("");
@@ -177,18 +181,24 @@ const Example: React.FC = (): JSX.Element => {
     timesheetData: Dictionary<string, TimesheetEntry>
   ): void => {
     const nextDayTimestampKey: string = moment(
-      Object.keys(timesheetData || {})[Object.keys(timesheetData || {}).length - ONE]
+      Object.keys(timesheetData || {})[
+        Object.keys(timesheetData || {}).length - ONE
+      ]
     )
       .add(ONE, "days")
       .format("YYYY-MM-DD");
     const todayTimestampKey = moment().format("YYYY-MM-DD");
     const rateOfPreviousEntry: number | undefined =
       timesheetData[
-        Object.keys(timesheetData || {})[Object.keys(timesheetData || {}).length - ONE]
+        Object.keys(timesheetData || {})[
+          Object.keys(timesheetData || {}).length - ONE
+        ]
       ]?.rate;
     const workingHoursOfPreviousEntry: number | undefined =
       timesheetData[
-        Object.keys(timesheetData || {})[Object.keys(timesheetData || {}).length - ONE]
+        Object.keys(timesheetData || {})[
+          Object.keys(timesheetData || {}).length - ONE
+        ]
       ]?.hours;
     const updatedTimesheetData = {
       ...timesheetData,
@@ -268,34 +278,37 @@ const Example: React.FC = (): JSX.Element => {
     extraExpensesData: Dictionary<string, ExtraExpensesEntry>,
     chosenEntryKey: string
   ): void => {
-    const updatedExtraExpensesData = Object.keys(extraExpensesData || {}).reduce(
-      (updatedExtraExpensesData, entryKey) => {
-        return entryKey === chosenEntryKey
-          ? updatedExtraExpensesData
-          : {
-              ...updatedExtraExpensesData,
-              [entryKey]: extraExpensesData[entryKey],
-            };
-      },
-      {}
-    );
+    const updatedExtraExpensesData = Object.keys(
+      extraExpensesData || {}
+    ).reduce((updatedExtraExpensesData, entryKey) => {
+      return entryKey === chosenEntryKey
+        ? updatedExtraExpensesData
+        : {
+            ...updatedExtraExpensesData,
+            [entryKey]: extraExpensesData[entryKey],
+          };
+    }, {});
     setExtraExpensesData(updatedExtraExpensesData);
   };
 
   return (
-    <Flex
-      direction={"column"}
-      padding={12}
-      backgroundColor={"#e8ebf2"}
-      justify={"center"}
-    >
-      <Card headStyle={{fontFamily: "'Actor', 'Gaegu', 'Fuzzy Bubbles', 'Pacifico', cursive", display: "swap", fontSize: "5em"}} style={{fontFamily: "Actor", color: "#345", fontWeight: "500", backgroundColor: "#e8ebf2"}} title="Invoicer">
-        <div className="site-card-wrapper">
+    <Flex direction={"column"} backgroundColor={"#e8ebf2"} justify={"center"}>
+      <Card
+        headStyle={{
+          fontFamily: "'Actor', 'Gaegu', 'Fuzzy Bubbles', 'Pacifico', cursive",
+          display: "swap",
+          fontSize: "5em",
+        }}
+        style={{
+          fontFamily: "Actor",
+          color: "#345",
+          fontWeight: "500",
+          backgroundColor: "#e8ebf2",
+        }}
+        title="Invoicer"
+      >
+        <div>
           <Card
-            type="inner"
-            title="Invoice builder"
-            headStyle={{backgroundColor: "#334455", color: "#fff", fontSize: "3em", fontWeight: "600"}}
-            style={{border: "0.1px solid #334455"}}
             extra={
               <Button.Group>
                 <Button onClick={handleShowPreview}>
@@ -313,11 +326,12 @@ const Example: React.FC = (): JSX.Element => {
           >
             {!showPreview && (
               <>
-                <Row gutter={16}>
-                  <Col span={8}>
-                    <Card title="Timeline setup" 
-                    headStyle={{backgroundColor: "#bbccdd"}}
-                    style={{border: "0.1px solid #bcd"}}
+                <Row>
+                  <Col xl={8} xs={24}>
+                    <Card
+                      title="Timeline setup"
+                      headStyle={{ backgroundColor: "#bbccdd" }}
+                      style={{ border: "0.1px solid #bcd" }}
                     >
                       <Form
                         layout={"vertical"}
@@ -379,10 +393,12 @@ const Example: React.FC = (): JSX.Element => {
                       </Form>
                     </Card>
                   </Col>
-                  <Col span={8}>
-                    <Card title="Client info"
-                    headStyle={{backgroundColor: "#bbccdd"}}
-                    style={{border: "0.1px solid #bcd"}}>
+                  <Col xl={8} xs={24}>
+                    <Card
+                      title="Client info"
+                      headStyle={{ backgroundColor: "#bbccdd" }}
+                      style={{ border: "0.1px solid #bcd" }}
+                    >
                       <Form.Item name="clientName" label="Company name">
                         <Input
                           placeholder={"Enter company name"}
@@ -427,9 +443,12 @@ const Example: React.FC = (): JSX.Element => {
                       </Form.Item>
                     </Card>
                   </Col>
-                  <Col span={8}>
-                    <Card title="Consultant info" headStyle={{backgroundColor: "#bbccdd"}}
-                    style={{border: "0.1px solid #bcd"}}>
+                  <Col xl={8} xs={24}>
+                    <Card
+                      title="Consultant info"
+                      headStyle={{ backgroundColor: "#bbccdd" }}
+                      style={{ border: "0.1px solid #bcd" }}
+                    >
                       <Form.Item name="consultantName" label="Consultant name">
                         <Input
                           placeholder={"Enter consultant name"}
@@ -477,8 +496,11 @@ const Example: React.FC = (): JSX.Element => {
                 </Row>
                 <Row gutter={16}>
                   <Col span={24}>
-                    <Card title="Details" headStyle={{backgroundColor: "#bbccdd"}}
-                    style={{border: "0.1px solid #bcd"}}>
+                    <Card
+                      title="Details"
+                      headStyle={{ backgroundColor: "#bbccdd" }}
+                      style={{ border: "0.1px solid #bcd" }}
+                    >
                       <Form
                         layout={"vertical"}
                         name="basic"
@@ -486,7 +508,7 @@ const Example: React.FC = (): JSX.Element => {
                         autoComplete="off"
                       >
                         <Row gutter={16}>
-                          <Col span={8}>
+                          <Col xl={8} xs={24}>
                             <Form.Item label={"Agreement signing date"}>
                               <DatePicker
                                 value={agreementSigningDate}
@@ -496,7 +518,7 @@ const Example: React.FC = (): JSX.Element => {
                               />
                             </Form.Item>
                           </Col>
-                          <Col span={8}>
+                          <Col xl={8} xs={24}>
                             {defaultClient && (
                               <Form.Item
                                 label="Working hours per day"
@@ -513,7 +535,7 @@ const Example: React.FC = (): JSX.Element => {
                               </Form.Item>
                             )}
                           </Col>
-                          <Col span={8}>
+                          <Col xl={8} xs={24}>
                             <Form.Item name="rate" label="Hourly rate">
                               <Input
                                 id={"rate"}
@@ -533,8 +555,11 @@ const Example: React.FC = (): JSX.Element => {
 
                 <Row gutter={16}>
                   <Col span={24}>
-                    <Card title="Bank account information" headStyle={{backgroundColor: "#bbccdd"}}
-                    style={{border: "0.1px solid #bcd"}}>
+                    <Card
+                      title="Bank account information"
+                      headStyle={{ backgroundColor: "#bbccdd" }}
+                      style={{ border: "0.1px solid #bcd" }}
+                    >
                       <Form
                         layout={"vertical"}
                         name="basic"
@@ -542,7 +567,7 @@ const Example: React.FC = (): JSX.Element => {
                         autoComplete="off"
                       >
                         <Row gutter={16}>
-                          <Col span={8}>
+                          <Col xl={8} xs={24}>
                             <Form.Item
                               label={"Beneficiary:"}
                               name="beneficiary"
@@ -583,7 +608,7 @@ const Example: React.FC = (): JSX.Element => {
                               />
                             </Form.Item>
                           </Col>
-                          <Col span={8}>
+                          <Col xl={8} xs={24}>
                             <Form.Item
                               label={"Intermediary bank:"}
                               name="intermediaryBank"
@@ -624,7 +649,7 @@ const Example: React.FC = (): JSX.Element => {
                               />
                             </Form.Item>
                           </Col>
-                          <Col span={8}>
+                          <Col xl={8} xs={24}>
                             <Form.Item
                               label={"Beneficiary bank:"}
                               name="beneficiaryBank"
@@ -677,8 +702,8 @@ const Example: React.FC = (): JSX.Element => {
                 <Flex background={"white"} borderRadius={20}>
                   <Row gutter={16}>
                     <Col>
-                      <Card hoverable>
-                        <Box flex={1} ref={componentRef}>
+                      <Card>
+                        <Box ref={componentRef} overflow={"scroll"}>
                           <Home
                             defaultClient={defaultClient}
                             consultantName={consultantName}
@@ -744,8 +769,8 @@ const Example: React.FC = (): JSX.Element => {
                     </Col>
                     <Col>
                       <Button onClick={handleToggleShowControls}>
-                        {showControls && <EditOutlined />}
-                        {showControls ? "Show controls" : "Hide controls"}
+                        {!showControls && <EditOutlined />}
+                        {!showControls ? "Show controls" : "Hide controls"}
                       </Button>
                     </Col>
                   </Row>
