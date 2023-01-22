@@ -289,7 +289,7 @@ const Example: React.FC = (): JSX.Element => {
       backgroundColor={"#e8ebf2"}
       justify={"center"}
     >
-      <Card headStyle={{fontFamily: "'Gaegu', 'Fuzzy Bubbles', 'Pacifico', cursive", display: "swap", fontSize: "5em"}} style={{fontFamily: "Avenir Next", color: "#345", fontWeight: "500", backgroundColor: "#e8ebf2"}} title="Invoicer">
+      <Card headStyle={{fontFamily: "'Actor', 'Gaegu', 'Fuzzy Bubbles', 'Pacifico', cursive", display: "swap", fontSize: "5em"}} style={{fontFamily: "Actor", color: "#345", fontWeight: "500", backgroundColor: "#e8ebf2"}} title="Invoicer">
         <div className="site-card-wrapper">
           <Card
             type="inner"

@@ -8,13 +8,13 @@ export enum blueTheme {
 }
 
 const overrides = {
-  fontFamily: "Avenir",
+  fontFamily: "Actor",
   textStyles: {
     mainTitle: {
       fontSize: "70px",
       lineHeight: "45px",
       color: blueTheme.textColor, //"#333",
-      fontFamily: "Avenir",
+      fontFamily: "Actor",
       fontWeight: "200",
     },
     title: {
@@ -23,7 +23,7 @@ const overrides = {
       fontWeight: "normal",
       color: blueTheme.textColor,
       // color: "#777",
-      fontFamily: "Avenir",
+      fontFamily: "Actor",
     },
     subTitle: {
       fontSize: "16px",
@@ -31,7 +31,7 @@ const overrides = {
       fontWeight: "semibold",
       // color: "#555",
       color: blueTheme.textColor,
-      fontFamily: "Avenir",
+      fontFamily: "Actor",
     },
     infoBlockHeader: {
       fontSize: "12px",
@@ -39,7 +39,7 @@ const overrides = {
       fontWeight: "semibold",
       // color: "#555",
       color: blueTheme.textColor,
-      fontFamily: "Avenir",
+      fontFamily: "Actor",
     },
     infoBlockValue: {
       fontSize: "12px",
@@ -47,14 +47,14 @@ const overrides = {
       fontWeight: "normal",
       // color: "#555",
       color: blueTheme.textColor,
-      fontFamily: "Avenir, sans-serif",
+      fontFamily: "Actor, sans-serif",
     },
     footer: {
       fontSize: "16px",
       lineHeight: "24px",
       // color: "#777",
       color: blueTheme.textColor,
-      fontFamily: "Avenir",
+      fontFamily: "Actor",
     },
     note: {
       fontSize: "16px",
@@ -62,20 +62,20 @@ const overrides = {
       fontWeight: "light",
       // color: "#777",
       color: blueTheme.textColor,
-      fontFamily: "Avenir",
+      fontFamily: "Actor",
     },
     directionHeader: {
       fontSize: "20px",
       lineHeight: "24px",
       fontWeight: "bold",
       color: blueTheme.lightAccent,
-      fontFamily: "Avenir",
+      fontFamily: "Actor",
     },
     directionText: {
       fontSize: "16px",
       lineHeight: "24px",
       color: blueTheme.lightAccent,
-      fontFamily: "Avenir",
+      fontFamily: "Actor",
     },
   },
 
