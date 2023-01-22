@@ -295,7 +295,7 @@ const Example: React.FC = (): JSX.Element => {
     <Flex direction={"column"} backgroundColor={"#e8ebf2"} justify={"center"}>
       <Card
         headStyle={{
-          fontFamily: "'Actor', 'Gaegu', 'Fuzzy Bubbles', 'Pacifico', cursive",
+          fontFamily: "'Actor', 'Fuzzy Bubbles', 'Pacifico', cursive",
           display: "swap",
           fontSize: "5em",
         }}
@@ -303,7 +303,6 @@ const Example: React.FC = (): JSX.Element => {
           fontFamily: "Actor",
           color: "#345",
           fontWeight: "500",
-          backgroundColor: "#e8ebf2",
         }}
         title="Invoicer"
       >
@@ -331,7 +330,6 @@ const Example: React.FC = (): JSX.Element => {
                     <Card
                       title="Timeline setup"
                       headStyle={{ backgroundColor: "#bbccdd" }}
-                      style={{ border: "0.1px solid #bcd" }}
                     >
                       <Form
                         layout={"vertical"}
@@ -397,7 +395,6 @@ const Example: React.FC = (): JSX.Element => {
                     <Card
                       title="Client info"
                       headStyle={{ backgroundColor: "#bbccdd" }}
-                      style={{ border: "0.1px solid #bcd" }}
                     >
                       <Form.Item name="clientName" label="Company name">
                         <Input
@@ -447,7 +444,6 @@ const Example: React.FC = (): JSX.Element => {
                     <Card
                       title="Consultant info"
                       headStyle={{ backgroundColor: "#bbccdd" }}
-                      style={{ border: "0.1px solid #bcd" }}
                     >
                       <Form.Item name="consultantName" label="Consultant name">
                         <Input
@@ -499,7 +495,6 @@ const Example: React.FC = (): JSX.Element => {
                     <Card
                       title="Details"
                       headStyle={{ backgroundColor: "#bbccdd" }}
-                      style={{ border: "0.1px solid #bcd" }}
                     >
                       <Form
                         layout={"vertical"}
@@ -558,7 +553,6 @@ const Example: React.FC = (): JSX.Element => {
                     <Card
                       title="Bank account information"
                       headStyle={{ backgroundColor: "#bbccdd" }}
-                      style={{ border: "0.1px solid #bcd" }}
                     >
                       <Form
                         layout={"vertical"}
